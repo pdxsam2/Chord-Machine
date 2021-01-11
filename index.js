@@ -24,7 +24,7 @@ base: base note
 key: (technically used for determining min/maj but also effects all future chord values)
 modifiers: list of modified notes 
 */
-//TODO: modifiers need some extra logic (e.g. flat 7 needs to be adjusted)
+//TODO: modifiers need some extra logic (e.g. flat 7 needs to be adjusted, maybe abstract note rules?)
 function buildChord(base, key, modifiers){
     let min;
     let keyIndex;
@@ -35,7 +35,7 @@ function buildChord(base, key, modifiers){
     }
     baseIndex= notes.indexOf(base);
 
-    if(min){
+    if(min){ //TODO: lots of repeated code here, abstract to variables
         let notesI= baseIndex;
         let chord= [];
         for(let i= 0; i < minSteps.length; ++i){
@@ -67,6 +67,6 @@ function buildChord(base, key, modifiers){
     }
 }
 
-console.log(buildChord('C', 'Eb', []));
+console.log(buildChord('C', 'C', [6, 7]));
 console.log(buildChord('B', 'B', []));
 
